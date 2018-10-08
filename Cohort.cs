@@ -10,7 +10,7 @@ namespace NSS
         public string CohortName { get; set; }
 
     public List<Student> StuCollection = new List<Student>();
-        public List<Instructor> Instructors = new List<Instructor>();
+        public List<Instructor> InstCollection = new List<Instructor>();
 
 
 

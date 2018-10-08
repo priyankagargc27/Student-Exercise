@@ -1,3 +1,5 @@
+using System;
+
 namespace NSS
 {
     public class Instructor {
@@ -6,14 +8,22 @@ namespace NSS
         public string FirstName { get; set; }
 
         public string LastName { get ; set; }
-
+ public string FullName
+        {
+            get
+            {
+                return string.Format($"{FirstName} {LastName}");
+            }
+        }
+    
         public string SlackHandle { get; set; }
 
-        public string Cohort { get ; set; }
+        public int Cohort { get ; set; }
 
-        public void AssignExercise(Exercise e, Student s)
+        public void AssignExercise(Exercise exercise, Student student)
         {
-            
+            student.ExcerciseAssigned.Add(exercise);
+ 
         }
 
 
