@@ -206,6 +206,8 @@ namespace NSS
         select instructor).ToList();
          Console.WriteLine ("----- Cohort 27 Instructors -----");
             foreach (Instructor inst in CohortInstructor) {
+            Console.WriteLine (inst.LastName);
+
                 Console.WriteLine (inst.FirstName);
             }
    
@@ -255,11 +257,15 @@ foreach(Student stu in stumostexercise){
 
    
     // How many students in each cohort?
-            Console.WriteLine ("----Student number in each cohort-");
-            foreach (Cohort cohort in cohorts) {
-                Console.WriteLine ($"{cohort.CohortName} has {cohort.StuCollection.Count} students");
-            }
-   
+            // Console.WriteLine ("----Student number in each cohort-");
+            // foreach (Cohort cohort in cohorts) {
+            //     Console.WriteLine ($"{cohort.CohortName} has {cohort.StuCollection.Count} students");
+            // }
+   var numberofstudentsineachcohort = students.GroupBy(c => c.Cohort.CohortName);
+   foreach(var studentgroup in numberofstudentsineachcohort)
+   {
+       Console.WriteLine($"{studentgroup.Key} has {studentgroup.Count()} students");
+   }
    
     }
 }
