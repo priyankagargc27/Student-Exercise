@@ -8,7 +8,11 @@ namespace NSS
         public string FirstName { get; set; }
 
         public string LastName { get ; set; }
- public string FullName
+        
+        
+        
+        //Constructor for geeting full name
+        public string FullName
         {
             get
             {
@@ -18,8 +22,17 @@ namespace NSS
     
         public string SlackHandle { get; set; }
 
-        public int Cohort { get ; set; }
+        public Cohort Cohort {get; set;}
 
+// public Instructor (string firstName, string lastname, string slackHandle, Cohort cohort)
+// {
+//     FirstName = firstName ;
+//     LastName = lastname ;
+//     SlackHandle = slackHandle ;
+//     Cohort = Cohort ;
+
+// }
+        // assign an exercise to student
         public void AssignExercise(Exercise exercise, Student student)
         {
             student.ExcerciseAssigned.Add(exercise);
