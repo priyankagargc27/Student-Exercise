@@ -4,11 +4,15 @@ namespace NSS
     public class Exercise {
         
         
-         public Exercise(string ExerciseName, string ExerciseLanguage) {
-            Name = ExerciseName;
+         public Exercise(string Name, string ExerciseLanguage) {
+             ExerciseName = Name ;
             Language = ExerciseLanguage;
         } 
-        public string Name { get; set; }
+        public Exercise()
+        {
+        
+        }
+        public string ExerciseName { get; set; }
 
         public string Language { get ; set; }
 
