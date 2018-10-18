@@ -14,7 +14,7 @@ namespace NSS.Data
         {
             get
             {
-                string connectionString = $"Data Source=./Student-Exercise.db";
+                string connectionString = $"Data Source=./Studentexercise.db";
                 return new SqliteConnection(connectionString);
             }
         }
@@ -59,6 +59,8 @@ namespace NSS.Data
             {
                 List<Instructor> instructor = db.Query<Instructor>
                     ("SELECT Id FROM Instructor").ToList();
+                    Console.WriteLine("Instructor table select");
+
             }
             catch (System.Exception ex)
             {
@@ -70,7 +72,7 @@ namespace NSS.Data
                         `LastName`    TEXT NOT NULL,
                         `SlackHandle`    TEXT NOT NULL,
                         `CohortId` INTEGER NOT NULL,
-                        FOREIGN KEY(`CohortId`) REFERENCES `Cohort`(`Id`)
+                        FOREIGN KEY(`CohortId`) REFERENCES `Cohort`(`CohortId`)
                     )");
 
                    db.Execute($@"INSERT INTO Instructor
@@ -152,6 +154,8 @@ namespace NSS.Data
             {
                 List<Student> student = db.Query<Student>
                     ("SELECT Id FROM Student").ToList();
+                Console.WriteLine("Student table select");
+
             }
             catch (System.Exception ex)
             {
@@ -164,10 +168,10 @@ namespace NSS.Data
                         `SlackHandle`    TEXT NOT NULL,
                             `CohortId` INTEGER NOT NULL,
 
-                        FOREIGN KEY(`CohortId`) REFERENCES `Cohort`(`Id`)
+                        FOREIGN KEY(`CohortId`) REFERENCES `Cohort`(`CohortId`)
                     )");
 
-                   db.Execute($@"INSERT INTO Instructor
+                   db.Execute($@"INSERT INTO Student
                         SELECT null,
                               'Priyanka',
                               'Garg',
@@ -225,9 +229,9 @@ namespace NSS.Data
                         `StudentId`	integer NOT NULL,
                         `ExerciseId`	integer NOT NULL,
                         `InstructorId`	integer NOT NULL,
-                        FOREIGN KEY(`StudentId`) REFERENCES `Student`(`Id`),
-                        FOREIGN KEY(`ExerciseId`) REFERENCES `Exercise`(`Id`),
-                        FOREIGN KEY(`InstructorId`) REFERENCES `Instructor`(`Id`)
+                        FOREIGN KEY(`StudentId`) REFERENCES `Student`(`StudentId`),
+                        FOREIGN KEY(`ExerciseId`) REFERENCES `Exercise`(`ExerciseId`),
+                        FOREIGN KEY(`InstructorId`) REFERENCES `Instructor`(`InstructorId`)
                     )");
 
                     db.Execute(@"INSERT INTO StudentExercise

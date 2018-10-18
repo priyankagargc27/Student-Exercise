@@ -25,6 +25,8 @@ namespace NSS
                 2. Convert result to list
                 3. Use ForEach to iterate the collection
             */
+
+            //List All the database
             List<Cohort> cohort = db.
                 Query<Cohort>(@"SELECT * FROM Cohort")
                  .ToList();
@@ -34,8 +36,31 @@ namespace NSS
                 Query<Exercise>(@"SELECT * FROM Exercise")
                  .ToList();
             exercises.ForEach(ex => Console.WriteLine($"{ex.ExerciseName} {ex.Language}"));
+            
+            List<Student> student = db.
+                Query<Student>(@"SELECT * FROM Student")
+                 .ToList();
+                 Console.WriteLine($"{student.Count}");
+            student.ForEach(st => Console.WriteLine($"{st.FirstName} {st.LastName}{st.SlackHandle}!!"));
+             
+             List<Instructor> instructor = db.
+                Query<Instructor>(@"SELECT * FROM Instructor")
+                 .ToList();
+            instructor.ForEach(ins => Console.WriteLine($"{ins.FirstName} {ins.LastName}{ins.SlackHandle}!!"));
 
             
+             //Fnd all the exercises in the database where the language is JavaScript.
+List<Exercise> JSexercise = db.
+                Query<Exercise>(@"SELECT * FROM Exercise where language = 'JS'")
+                 .ToList();
+                Console.WriteLine("--------------------------------------------");
+                Console.WriteLine("All JAvascript exercises in excercise table");
+                 Console.WriteLine("--------------------------------------------");
+            JSexercise.ForEach(ex => Console.WriteLine($"{ex.ExerciseName} {ex.Language}"));
+
+            
+            
+            //Find all instructors in the database. Include each instructor's cohort.
 
 
 
